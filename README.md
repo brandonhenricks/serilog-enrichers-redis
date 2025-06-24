@@ -6,6 +6,8 @@ A Serilog enricher that adds Redis-specific context to your log events, providin
 [![NuGet](https://img.shields.io/nuget/v/Serilog.Enrichers.Redis.svg)](https://www.nuget.org/packages/Serilog.Enrichers.Redis/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+---
+
 ## Features
 
 - Enriches log events with Redis exception details
@@ -26,7 +28,10 @@ Or using the Package Manager:
 Install-Package Serilog.Enrichers.Redis
 ```
 
-Usage
+---
+
+## Usage
+
 Add the Redis enricher to your Serilog configuration:
 
 ```csharp
@@ -34,13 +39,26 @@ using Serilog;
 using Serilog.Enrichers.Redis;
 
 Log.Logger = new LoggerConfiguration()
-    .Enrich.WithRedisEnricher()
+    .Enrich.WithRedisExceptionEnricher()
     .WriteTo.Console()
     .CreateLogger();
 ```
 
 Now, any Redis-related exceptions will include additional context in your logs.
 
+## Contributing
+
+Contributions are welcome! Please open issues or submit pull requests.  
+If you have feature requests or questions, open a discussion or issue on GitHub.
+
+**To contribute:**
+
+- Fork this repository
+- Create a feature branch
+- Open a pull request describing your changes
+
+---
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
