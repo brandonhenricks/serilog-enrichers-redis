@@ -26,7 +26,7 @@ jobs:
         run: dotnet restore
 
       - name: Run dotnet format
-        run: dotnet format Serilog.Enrichers.Xperience.sln --exclude ./examples/** --verify-no-changes --verbosity diagnostic
+        run: dotnet format Serilog.Enrichers.Redis.sln --exclude ./examples/** --verify-no-changes --verbosity diagnostic
 
   build_and_test:
     name: Build and Test

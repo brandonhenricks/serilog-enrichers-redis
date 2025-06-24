@@ -27,18 +27,14 @@ namespace Serilog.Enrichers.Redis
             Assert.Contains(logEvent.Properties, p => p.Key == "Redis_HelpLink" && p.Value.ToString().Contains("https://redis.io/help"));
         }
 
-
         [Fact]
         public void Enrich_ParsesAndAddsProperties_ForRedisTimeoutException()
         {
-
             var timeoutEx = new RedisTimeoutException("timeout: 5678, qu: 7, something: different", CommandStatus.WaitingInBacklog);
             var logEvent = CreateLogEvent(timeoutEx);
             var enricher = new RedisExceptionEnricher();
 
-
             enricher.Enrich(logEvent, new SimplePropertyFactory());
-
 
             Assert.Contains(logEvent.Properties, p => p.Key == "Redis_timeout" && p.Value.ToString() == "\"5678\"");
             Assert.Contains(logEvent.Properties, p => p.Key == "Redis_qu" && p.Value.ToString() == "\"7\"");
@@ -88,23 +84,18 @@ namespace Serilog.Enrichers.Redis
             Assert.Empty(logEvent.Properties);
         }
 
-        private LogEvent CreateLogEvent(Exception ex)
+        private static LogEvent CreateLogEvent(Exception ex)
         {
             return new LogEvent(
                 DateTimeOffset.Now,
                 LogEventLevel.Error,
                 ex,
-                new MessageTemplate("test", new List<MessageTemplateToken>()),
+                new MessageTemplate("test", []),
                 new List<LogEventProperty>());
         }
 
         private class SimplePropertyFactory : ILogEventPropertyFactory
         {
-            public LogEventProperty CreateProperty(string name, object value)
-            {
-                return new LogEventProperty(name, new ScalarValue(value));
-            }
-
             public LogEventProperty CreateProperty(string name, object? value, bool destructureObjects = false)
             {
                 // Create a LogEventProperty using the provided name and value

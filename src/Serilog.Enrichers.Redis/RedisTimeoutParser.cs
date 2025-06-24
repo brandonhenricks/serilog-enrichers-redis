@@ -10,14 +10,14 @@ namespace Serilog.Enrichers.Redis
         /// <summary>
         /// Regular expression to match key-value pairs in the format "key: value".
         /// </summary>
-        private static readonly Regex keyValueRegex = new Regex(@"(\w+):\s*([^,]+)", RegexOptions.Compiled);
+        private static readonly Regex s_keyValueRegex = new Regex(@"(\w+):\s*([^,]+)", RegexOptions.Compiled);
 
         /// <summary>
         /// Parses a Redis timeout message and extracts key-value pairs.
         /// </summary>
         /// <param name="message">The Redis timeout message to parse.</param>
         /// <returns>
-        /// A dictionary containing the extracted key-value pairs. 
+        /// A dictionary containing the extracted key-value pairs.
         /// If the message is null, empty, or does not contain any key-value pairs, an empty dictionary is returned.
         /// </returns>
         public static IDictionary<string, string> Parse(string message)
@@ -29,7 +29,7 @@ namespace Serilog.Enrichers.Redis
                 return data;
             }
 
-            foreach (Match match in keyValueRegex.Matches(message))
+            foreach (Match match in s_keyValueRegex.Matches(message))
             {
                 if (match.Groups.Count == 3)
                 {
