@@ -1,8 +1,8 @@
 # Serilog.Enrichers.Redis
 
-A Serilog enricher that adds Redis-specific context to your log events, providing detailed information about Redis exceptions, commands, and connections to help you diagnose and monitor Redis-related issues in your .NET applications.
+Serilog enricher for StackExchange.Redis exceptions. Adds structured diagnostic properties from Redis timeout and connection errors to help troubleshoot and monitor Redis behavior in distributed .NET applications.
 
-[![CI](.github/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
+[![Build Status](https://github.com/brandonhenricks/serilog-enrichers-redis/actions/workflows/ci.yml/badge.svg)](https://github.com/brandonhenricks/serilog-enrichers-redis/actions)
 [![NuGet](https://img.shields.io/nuget/v/Serilog.Enrichers.Redis.svg)](https://www.nuget.org/packages/Serilog.Enrichers.Redis/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
