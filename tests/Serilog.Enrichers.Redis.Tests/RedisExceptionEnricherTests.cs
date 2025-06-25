@@ -1,7 +1,6 @@
 ﻿using Serilog.Core;
 using Serilog.Enrichers.Redis.Enrichers;
 using Serilog.Events;
-using Serilog.Parsing;
 using StackExchange.Redis;
 
 namespace Serilog.Enrichers.Redis
