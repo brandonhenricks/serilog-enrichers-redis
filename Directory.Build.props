@@ -8,6 +8,9 @@
     <VersionPrefix>1.0.0</VersionPrefix>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Product>Serilog.Enrichers.Redis</Product>
+    <Description>
+    A Serilog enricher that adds Redis context and exception data to your log events. Enhance observability and troubleshooting for distributed .NET applications using Redis by including connection details, instance metadata, and enriched exception information in your logs.
+    </Description>
     <Title>$(Product)</Title>
     <PackageProjectUrl>https://github.com/brandonhenricks/serilog-enricher-redis</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/brandonhenricks/serilog-enricher-redis</PackageReleaseNotes>
