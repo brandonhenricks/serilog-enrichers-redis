@@ -21,12 +21,16 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           global-json-file: global.json
+          cache: true
+          cache-dependency-path: |
+            src/Serilog.Enrichers.Redis/packages.lock.json
+            tests/Serilog.Enrichers.Redis.Tests/packages.lock.json
 
       - name: Install dependencies
         run: dotnet restore
 
       - name: Run dotnet format
-        run: dotnet format Serilog.Enrichers.Redis.sln --exclude ./examples/** --verify-no-changes --verbosity diagnostic
+        run: dotnet format Serilog.Enrichers.Redis.sln --exclude ./tests/** --verify-no-changes --verbosity diagnostic
 
   build_and_test:
     name: Build and Test
@@ -49,6 +53,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           global-json-file: global.json
+          cache-dependency-path: |
+            src/Serilog.Enrichers.Redis/packages.lock.json
+            tests/Serilog.Enrichers.Redis.Tests/packages.lock.json
 
       - name: Install dependencies
         run: |
@@ -62,7 +69,7 @@ jobs:
             --no-restore     
       - name: Run Tests
         run: |
-          dotnet test`
+          dotnet test `
             --configuration Release `
             --no-build `
             --logger trx
