@@ -62,7 +62,7 @@ jobs:
             --no-restore     
       - name: Run Tests
         run: |
-          dotnet test ./tests `
+          dotnet test`
             --configuration Release `
             --no-build `
             --logger trx
