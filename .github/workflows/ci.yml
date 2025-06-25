@@ -59,4 +59,10 @@ jobs:
         run: |
           dotnet build `
             --configuration Release `
-            --no-restore
+            --no-restore     
+      - name: Run Tests
+        run: |
+          dotnet test ./tests `
+            --configuration Release `
+            --no-build `
+            --logger trx
