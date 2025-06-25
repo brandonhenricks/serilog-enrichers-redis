@@ -46,6 +46,38 @@ Log.Logger = new LoggerConfiguration()
 
 Now, any Redis-related exceptions will include additional context in your logs.
 
+### Using appsettings.json
+
+You can also configure Serilog and the Redis enricher via `appsettings.json`:
+
+**appsettings.json**
+
+```json
+{
+  "Serilog": {
+    "Using": [ "Serilog.Enrichers.Redis" ],
+    "Enrich": [ "WithRedisExceptionEnricher" ],
+    "WriteTo": [
+      { "Name": "Console" }
+    ]
+  }
+}
+```
+
+**Program.cs**
+
+```csharp
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(configuration) // assumes 'configuration' is your IConfiguration instance
+    .CreateLogger();
+```
+
+Make sure to add the necessary Serilog and enricher packages, and call `ReadFrom.Configuration` with your loaded configuration.
+
+---
+
 ## Contributing
 
 Contributions are welcome! Please open issues or submit pull requests.  
